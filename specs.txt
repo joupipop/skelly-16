@@ -1,9 +1,11 @@
------- SKELLY-16 ARCHITECTURE ------
+==========================
+= SKELLY-16 ARCHITECTURE =
+==========================
 
 --- GENERAL NOTES ---
-- 64K memory (maybe banking?)
-- 20bit wide words (see INSTRUCTION LAYOUT)
-- maximum value of 2^20 = 1'048'576 
+ - 64K memory (maybe banking?)
+ - 20bit wide words (see INSTRUCTION LAYOUT)
+ - maximum value of 2^20 = 1'048'576 
 
 --- REGISTERS ---
 A: GP register
@@ -12,7 +14,7 @@ F: ALU flags (zero, overflow)
 O: output register
 PC: program counter
 
-            --- INSTRUCTIONS ---		           --- ASSEMBLY ---       
+            --- INSTRUCTIONS ---		  --- ASSEMBLY ---       
 0: NOP → no operation                      | nop
 1: LDA addr/imm16 → A = addr/imm16         | lda $addr / lda #imm16
 2: STA addr/imm16 → addr/imm16 = A         | sta $addr / sta #imm16
