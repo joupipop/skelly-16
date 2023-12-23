@@ -1,0 +1,33 @@
+------ SKELLY-16 ARCHITECTURE ------
+
+--- GENERAL NOTES ---
+- 64K memory (maybe banking?)
+- 20bit wide words (see INSTRUCTION LAYOUT)
+- maximum value of 2^20 = 1'048'576 
+
+--- REGISTERS ---
+A: GP register
+B: operation register (stores the second term in an operation)
+F: ALU flags (zero, overflow)
+O: output register
+PC: program counter
+
+            --- INSTRUCTIONS ---		           --- ASSEMBLY ---       
+0: NOP → no operation                      | nop
+1: LDA addr/imm16 → A = addr/imm16         | lda $addr / lda #imm16
+2: STA addr/imm16 → addr/imm16 = A         | sta $addr / sta #imm16
+3: ADD addr/imm16 → A = A + addr/imm16     | add $addr / add #imm16
+4: SUB addr/imm16 → A = A - addr/imm16     | sub $addr / sub #imm16
+5: LPC → A = PC                            | lpc
+6: JMP not_zero/overflow → PC = imm16      | jmp nz #imm16 / jmp o #imm16 
+7: OUT halt/no_halt → O = A & halt/no halt | out @ / out
+
+
+--- INSTRUCTION LAYOUT ---
+xxxyzzzzzzzzzzzzzzzz
+x: op code
+y: argument
+	addr (0)/imm16 (1)
+	not_zero(0)/overflow (1)
+	halt (0)/dont_halt (1)
+z: address or immediate 16bit value
