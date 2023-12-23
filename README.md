@@ -21,3 +21,43 @@ PC: program counter
 7: OUT halt/no_halt → O = A & halt/no_halt
 ```
 See the [spec](specs.txt) for more information.
+
+## Assembly
+Assembly programs can be [assembled](assembly) to machine code which can be run by the emulator.<br>
+Assembly has 7 different base instructions, new ones can be added with the use of macros; a single instruction that is expanded to several base instructions.<br>
+The 7 base instructions correspond directly to the 7 instructions in the instruction set.<br>
+### Example assembly program (computes the Fibonacci sequence)
+```
+0: $0
+1: $1
+2: $0
+3: lda 0
+4: add 1
+5: sta 2
+6: lda 1
+7: sta 0
+8: lda 2
+9: sta 1
+a: out
+b: jmp nz 3
+```
+
+## Skelangton
+Skelangton is a high level programming language that can be [compiled](skelangton) to assembly code.
+### Example skelangton program (whole part division of 16 and 3)
+```swift
+func div(x, y)
+{
+  i = 0;
+  while (x >= y)
+  {
+    x = x - y;
+    i = i + 1;
+  }
+  return i;
+}
+
+division = func(16, 3);
+out(division);
+```
+
