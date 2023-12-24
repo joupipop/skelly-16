@@ -4,26 +4,25 @@
 
 --- GENERAL NOTES ---
  - 64K memory (maybe banking?)
- - 20bit wide words (see INSTRUCTION LAYOUT)
- - maximum value of 2^20 = 1'048'576 
+ - 16bit wide words (see INSTRUCTION LAYOUT)
+ - maximum value of 2^16 = 65'536 (maybe long integers?)
 
 --- REGISTERS ---
-A: GP register
-B: operation register (stores the second term in an operation)
-H: high index register
-L: low index register
-F: ALU flags (zero)
-O: output register
-PC: program counter
+A: GP register - 16bits
+B: operation register (stores the second term in an operation) - 16bits
+H: high index register - 8bits
+L: low index register - 8bits
+F: ALU flags (zero) - 1bit
+O: output register - 16bits
+PC: program counter - 16bits
 
             --- INSTRUCTIONS ---		  --- ASSEMBLY ---       
-0: NOP → no operation                      | nop
-1: LDA addr/imm16 → A = addr/imm16         | lda addr / lda $imm16
-2: STA addr/imm16 → addr/imm16 = A         | sta addr / sta $imm16
-3: ADD addr/imm16 → A = A + addr/imm16     | add addr / add $imm16
-4: SUB addr/imm16 → A = A - addr/imm16     | sub addr / sub $imm16
-5: LPC → A = PC                            | lpc
-6: JMP not_zero/overflow → PC = imm16      | jmp nz $imm16 / jmp o $imm16 
+0: LDA addr/imm16 → A = addr/imm16         | lda addr / lda $imm16
+1: STA addr/imm16 → addr/imm16 = A         | sta addr / sta $imm16
+2: ADD addr/imm16 → A = A + addr/imm16     | add addr / add $imm16
+3: SUB addr/imm16 → A = A - addr/imm16     | sub addr / sub $imm16
+4: LPC → A = PC                            | lpc
+5: JNZ imm12/L+imm8 → PC = imm12/L+imm8      | jmp nz $imm16 / jmp o $imm16 
 7: OUT halt/no_halt → O = A & halt/no_halt | out @ / out
 8: LDI low -> L = imm8
 9: JNZ imm8 -> PC = L  & imm8
