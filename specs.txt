@@ -35,6 +35,6 @@ xxxyzzzzzzzzzzzzzzzz
 x: op code
 y: argument
 	addr (0)/imm16 (1)
-	not_zero (0)/overflow (1)
+	imm12 (0)/L+imm8 (1)
 	halt (0)/dont_halt (1)
 z: address or immediate 16bit value
