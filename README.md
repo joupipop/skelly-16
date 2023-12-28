@@ -11,14 +11,14 @@ PC: program counter
 ```
 ### Instruction set
 ```
-0: NOP → no operation
-1: LDA addr/imm16 → A = addr/imm16
-2: STA addr/imm16 → addr/imm16 = A
-3: ADD addr/imm16 → A = A + addr/imm16
-4: SUB addr/imm16 → A = A - addr/imm16
-5: LPC → A = PC
-6: JMP not_zero/overflow → PC = imm16
-7: OUT halt/no_halt → O = A & halt/no_halt
+0: LDA addr/imm12 → A = addr/imm12
+1: STA addr/imm12 → addr/imm12 = A
+2: ADD addr/imm12 → A = A + addr/imm12
+3: SUB addr/imm12 → A = A - addr/imm12
+4: LPC → A = PC
+5: JNZ imm12/L+imm8 → PC = imm12/L+imm8
+6: OUT halt/no_halt → O = A & halt/no_halt
+7: LDI imm8 → L = imm8 | ldi $imm8
 ```
 See the [spec](specs.txt) for more information.
 
