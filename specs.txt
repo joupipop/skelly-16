@@ -16,15 +16,15 @@ F: ALU flags (zero) - 1bit
 O: output register - 16bits
 PC: program counter - 16bits
 
-            --- INSTRUCTIONS ---		  --- ASSEMBLY ---       
-0: LDA addr/imm12 → A = addr/imm12        | lda addr / lda $imm12
+            --- INSTRUCTIONS ---	       --- ASSEMBLY ---       
+0: LDA addr/imm12 → A = addr/imm12         | lda addr / lda $imm12
 1: STA addr/imm12 → addr/imm12 = A         | sta addr / sta $imm16
 2: ADD addr/imm12 → A = A + addr/imm12     | add addr / add $imm12
 3: SUB addr/imm12 → A = A - addr/imm12     | sub addr / sub $imm12
 4: LPC → A = PC                            | lpc
-5: JNZ imm12/L+imm8 → PC = imm12/L+imm8      | jnz $imm12 / jnz +$imm8
-7: OUT halt/no_halt → O = A & halt/no_halt | out @ / out
-8: LDI imm8 → L = imm8 | ldi $imm8
+5: JNZ imm12/L+imm8 → PC = imm12/L+imm8    | jnz $imm12 / jnz +$imm8
+6: OUT halt/no_halt → O = A & halt/no_halt | out @ / out
+7: LDI imm8 → L = imm8 | ldi $imm8         | ldi $imm8
 
 --- INSTRUCTION LAYOUT ---
 xxxyzzzzzzzzzzzzzzzz
